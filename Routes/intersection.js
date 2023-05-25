@@ -1,10 +1,9 @@
 const router = require("express").Router();
 const Intersection = require("../Models/Intersection");
-const CryptoJS = require("crypto-js")
 const {
     verifyToken,
 } = require("./Middleware/verification.js");
-const { read, deleteData, updateWithoutPassword } = require("./rud");
+const { read, deleteData, updateWithoutPassword } = require("./rud/rud");
 
 
 router.post("/", verifyToken, async (req, res) => {
