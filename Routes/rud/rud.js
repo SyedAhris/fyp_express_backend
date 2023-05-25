@@ -7,8 +7,9 @@ const read = async ( model ,errName, req, res) => {
         const data = await model.find({$and:[query]});
         if (data.length === 0) {
             res.status(404).json(`No ${errName} with such query weer found.`);
+        } else {
+            res.status(200).json(data);
         }
-        res.status(200).json(data);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -53,12 +54,8 @@ const updateWithoutPassword = async ( model, req, res) => {
 
 const deleteData = async ( model ,errName, req, res) => {
     try {
-        await model.findByIdAndUpdate(
-            req.params.id,
-            {
-                isDelete: true,
-            },
-            { new: true }
+        await model.findByIdAndDelete(
+            req.params.id
         );
         res.status(200).json(`${errName} is successfully deleted`);
     } catch (err) {
