@@ -3,6 +3,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+const userRoute = require('./Routes/user');
+const intersectionRoute = require('./Routes/intersection');
+const authRoute = require('./Routes/auth');
+
+
 const app = express();
 
 dotenv.config();
@@ -21,6 +26,11 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err) => {
         console.log(err);
     });
+
+
+app.use('/user', userRoute);
+app.use('/intersection', intersectionRoute);
+app.use('/auth', authRoute);
 
 // check api
 app.get('/', (req, res) => {
