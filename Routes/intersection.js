@@ -21,10 +21,10 @@ router.post("/", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/", verifyToken, async (req, res) => await read(Ride, "Ride", req, res));
+router.get("/", verifyToken, async (req, res) => await read(Intersection, "Intersection", req, res));
 
-router.patch("/:id", verifyToken, async (req, res) => await updateWithoutPassword(Ride, req, res));
+router.patch("/:id", verifyToken, async (req, res) => await updateWithoutPassword(Intersection, req, res));
 
-router.delete("/:id", verifyToken, async (req, res) => await deleteData(Ride, "Ride", req, res));
+router.delete("/:id", verifyToken, async (req, res) => await deleteData(Intersection, "Intersection", req, res));
 
 module.exports = router;
