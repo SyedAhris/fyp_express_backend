@@ -42,7 +42,7 @@ router.post("/user/login", async (req, res) => {
                     id: user._id,
                 }, process.env.JWT_KEY, {expiresIn:"3d"});
 
-                res.status(200).json(accessToken);
+                res.status(200).json({'user': user, 'accessToken': accessToken});
             }
         }
     }catch(err){
